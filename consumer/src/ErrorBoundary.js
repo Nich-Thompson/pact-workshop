@@ -14,7 +14,7 @@ export default class ErrorBoundary extends React.Component {
     if (this.state.has_error) {
       return (
         <Layout>
-          <Heading text="Sad times :(" href="/" />
+          <Heading text="Call unsuccesful :(" href="/" />
           <div className="columns">
             <img
               className="column col-6"

@@ -4,6 +4,8 @@ import { Product } from './product';
 
 axios.defaults.adapter = adapter;
 
+// This class contains the API calls our consumer performs
+
 export class API {
   constructor(url) {
     if (url === undefined || url === '') {
