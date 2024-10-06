@@ -22,21 +22,12 @@ describe('Pact Verification', () => {
       console.log('pact url specified, so this test should not run');
       return;
     }
-    // For 'normal' provider builds, fetch the the latest version from the main branch of each consumer, as specified by
-    // the consumer's mainBranch property and all the currently deployed and currently released and supported versions of each consumer.
-    // https://docs.pact.io/pact_broker/advanced_topics/consumer_version_selectors
     const fetchPactsDynamicallyOpts = {
-      provider: 'pactflow-example-provider',
-      consumerVersionSelectors: [
-        { mainBranch: true },
-        { deployed: true },
-        { matchingBranch: true }
-      ],
-      pactBrokerUrl: process.env.PACT_BROKER_BASE_URL,
-      // https://docs.pact.io/pact_broker/advanced_topics/pending_pacts
-      enablePending: true,
-      // https://docs.pact.io/pact_broker/advanced_topics/wip_pacts
-      includeWipPactsSince: '2020-01-01'
+      // IMPORTANT: Relative path to the pact file does not work, so use your absolute path
+
+      pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/test.json"]
+      // pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/fail.json"]
+      // pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/pactflow-example-consumer-pactflow-example-provider.json"]
     };
 
     const opts = {
