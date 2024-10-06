@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import ProductPage from './ProductPage';
 import ErrorBoundary from './ErrorBoundary';
+import ImgPage from './ImgPage';
 
 const routing = (
   <BrowserRouter history="">
@@ -14,6 +15,9 @@ const routing = (
           <Route path="/" element={<App />} />
           <Route path="/products/">
             <Route path=":id" element={<ProductPage />} />
+          </Route>
+          <Route path="/img/">
+            <Route path=":id" element={<ImgPage />} />
           </Route>
         </Routes>
       </ErrorBoundary>

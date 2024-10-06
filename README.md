@@ -16,7 +16,7 @@ Je ziet hier... TODO:
 
 ### Contract
 Wat kunnen we met dit contract? Omdat we geen toegang hebben tot een PactFlow broker, momenteel niet veel!
-DELA heeft wel een broker (https://delagroup.pactflow.io), maar daar kunnen we niet zomaar bij. 
+DELA heeft wel een broker (https://delagroup.pactflow.io), maar daar kunnen we niet zomaar bij, en het zou te veel tijd kosten om voor iedereen een eigen broker op te zetten. 
 
 Om toch het idee duidelijk te maken gebruiken schetsen we hier een scenario:
 We hebben een nieuw project opgezet waar wij de consumer zijn, laten we zeggen dat we bestellingen voor telefoons willen kunnen plaatsen via een API. 
@@ -26,6 +26,7 @@ Omdat we herhaalbaar de benodigde stappen kunnen belopen hebben we deze in een p
 Om dit te doen doorloopt de pipeline de volgende stappen:
 
 TODO: link naar illustration
+[x](http://localhost:3000/img/1)
 1. Run tests & genereer contract 
 We hebben het afgestemde contract in code verwerkt zoals in api.pact.spec.js, op basis van deze code genereert Pact een contract.
 2. Publish het contract naar de broker (PactFlow)
@@ -33,6 +34,7 @@ We hebben het afgestemde contract in code verwerkt zoals in api.pact.spec.js, op
 3. Run can-i-deploy (https://docs.pact.io/pact_broker/can_i_deploy)
 Dit is een tool die gaat verifiëren dat de provider het nieuwe contract geaccepteerd heeft.
 Op dit punt zou hij dus moeten falen, want Besteltel heeft nog niet geverifieerd dat het contract ook aan hun tests voldoet.
+Dat betekent dat we nu niet mogen deployen. 
 
 x
 
