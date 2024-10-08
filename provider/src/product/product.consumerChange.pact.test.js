@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const { Verifier } = require('@pact-foundation/pact');
 const {
   baseOpts,
@@ -29,7 +30,7 @@ describe('Pact Verification', () => {
 
     const opts = {
       ...baseOpts,
-      pactUrls: [process.env.PACT_URL],
+      pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/pacts/test.json"],
       stateHandlers: stateHandlers,
       requestFilter: requestFilter
     };

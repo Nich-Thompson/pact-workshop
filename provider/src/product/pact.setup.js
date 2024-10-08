@@ -3,7 +3,7 @@ const Product = require("./product");
 
 const baseOpts = {
   logLevel: "INFO",
-  providerBaseUrl: "http://localhost:8080",
+  providerBaseUrl: "http://localhost:8081",
   // providerVersion: process.env.GIT_COMMIT,
   // providerVersionBranch: process.env.GIT_BRANCH, // the recommended way of publishing verification results with the branch property
   verbose: process.env.VERBOSE === "true",
@@ -16,7 +16,7 @@ const setupServer = () => {
   const authMiddleware = require("../middleware/auth.middleware");
   app.use(authMiddleware);
   app.use(require("./product.routes"));
-  const server = app.listen("8080");
+  const server = app.listen("8081");
   return server;
 };
 
