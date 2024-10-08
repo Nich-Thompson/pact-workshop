@@ -1,5 +1,5 @@
-const controller = require("./product.controller");
-const Product = require("./product");
+const controller = require("./service/product.controller");
+const Product = require("./service/product");
 
 const baseOpts = {
   logLevel: "INFO",
@@ -15,7 +15,7 @@ const setupServer = () => {
   const app = require("express")();
   const authMiddleware = require("../middleware/auth.middleware");
   app.use(authMiddleware);
-  app.use(require("./product.routes"));
+  app.use(require("./service/product.routes"));
   const server = app.listen("8081");
   return server;
 };

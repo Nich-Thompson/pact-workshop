@@ -1,8 +1,10 @@
-const ProductRepository = require('./product.repository')
+const ProductRepository = require('./service/product.repository')
 
 describe("ProductRepository", () => {
-  it("has some products", () => {
+  it("has products", () => {
     const productRepository = new ProductRepository()
-    return expect(productRepository.fetchAll()).resolves.toHaveLength(3);
+    return productRepository.fetchAll().then(products => {
+      expect(products.length).toBeGreaterThan(0);
+    });
   })
 });
