@@ -3,7 +3,6 @@ import 'spectre.css/dist/spectre.min.css';
 import 'spectre.css/dist/spectre-icons.min.css';
 import 'spectre.css/dist/spectre-exp.min.css';
 import Layout from './Layout';
-import Heading from './Heading';
 
 class ImgPage extends React.Component {
   constructor(props) {
@@ -47,7 +46,6 @@ class ImgPage extends React.Component {
 
     return (
       <Layout>
-        <Heading text="Products" href="/" />
         <a href="/img/1">Image_1</a>&nbsp;
         <a href="/img/2">Image_2</a>&nbsp;
         <a href="/img/3">Image_3</a>&nbsp;

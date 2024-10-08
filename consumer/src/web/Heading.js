@@ -1,21 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Heading(props) {
+function Heading() {
   return (
     <div>
-      <h1><a style={{
-        textDecoration: "none",
-        color: "#635e5e"
-      }} href={props.href}>{props.text}</a></h1>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <h1 style={{ margin: "0px 20px 0px 0px" }}>
+          <a href="/" style={{ color: "#635e5e" }}>
+            Products
+          </a>
+        </h1>
+        
+        <h1 style={{ margin: "0px 20px 0px 0px" }}>
+          <a href="/img/1" style={{ color: "#635e5e" }}>
+            Images
+          </a>
+        </h1>
+      </div>
       <hr/>
     </div>
   );
 }
-
-Heading.propTypes = {
-  href: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
-};
 
 export default Heading;

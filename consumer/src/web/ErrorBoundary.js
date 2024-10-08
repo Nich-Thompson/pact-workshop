@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Layout from "./Layout";
-import Heading from "./Heading";
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ export default class ErrorBoundary extends React.Component {
     if (this.state.has_error) {
       return (
         <Layout>
-          <Heading text="Error occurred :(" href="/" />
+          <h1>Error occurred :/</h1>
           <div className="columns">
             <img
               className="column col-6"

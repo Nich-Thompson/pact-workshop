@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import 'spectre.css/dist/spectre.min.css';
 import 'spectre.css/dist/spectre-icons.min.css';
 import 'spectre.css/dist/spectre-exp.min.css';
-import Heading from './Heading';
 import Layout from './Layout';
 import API from './api';
 import PropTypes from 'prop-types';
@@ -119,7 +118,6 @@ class App extends React.Component {
 
     return (
       <Layout>
-        <Heading text="Products" href="/" />
         <div className="form-group col-2">
           <label className="form-label" htmlFor="input-product-search">
             Search

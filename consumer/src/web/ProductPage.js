@@ -3,7 +3,6 @@ import 'spectre.css/dist/spectre.min.css';
 import 'spectre.css/dist/spectre-icons.min.css';
 import 'spectre.css/dist/spectre-exp.min.css';
 import Layout from './Layout';
-import Heading from './Heading';
 import API from './api';
 
 class ProductPage extends React.Component {
@@ -47,7 +46,6 @@ class ProductPage extends React.Component {
 
     return (
       <Layout>
-        <Heading text="Products" href="/" />
         {this.state.loading ? (
           <div
             style={{
