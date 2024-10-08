@@ -14,12 +14,14 @@ describe('API Pact test', () => {
   describe('retrieving a product', () => {
     test('ID 3 exists', async () => {
       // Arrange
+      // Zet het object op dat we later terugverwachten
       let expectedProduct = {
         id: '3',
         type: 'Kist',
         name: 'Mooie Eikenhouten Kist'
       };
 
+      // Zorg dat de mockProvider het verwachtte object terug gaat geven wanneer we de request doen
       mockProvider
         .given('a product with ID 3 exists')
         .uponReceiving('a request to get a product')
@@ -37,8 +39,9 @@ describe('API Pact test', () => {
           },
           body: like(expectedProduct)
         });
+
+      // Act - perform the request on the mock provider
       return mockProvider.executeTest(async (mockserver) => {
-        // Act
         const api = new API(mockserver.url);
         const product = await api.getProduct('3');
 

@@ -9,26 +9,25 @@ const {
 
 describe('Pact Verification', () => {
   let server;
+  
   beforeAll(() => {
     server = setupServer();
   });
+  
   afterAll(() => {
     if (server) {
       server.close();
     }
   });
-  it('validates the expectations of any consumers, by specified consumerVersionSelectors', () => {
-    if (process.env.PACT_URL) {
-      console.log('pact url specified, so this test should not run');
-      return;
-    }
 
+  it('validates the expectations of any consumers, by specified consumerVersionSelectors', () => {
     const fetchPactsDynamicallyOpts = {
       // IMPORTANT: Relative path uses the path relative to the path from where the test is run, 
       // so make sure to run this in the /provider directory
-      // pactUrls: ["./src/product/pact/local-pacts/test.json"] 
-
-      pactUrls: ["./src/product/pact/local-pacts/fail.json"] // uncomment to see a failed verification 
+      
+      pactUrls: ["./src/product/pact/local-pacts/pactflow-example-consumer-pactflow-example-provider.json"] 
+      // pactUrls: ["./src/product/pact/local-pacts/test.json"]
+      // pactUrls: ["./src/product/pact/local-pacts/fail.json"] // uncomment to see a failed verification 
     };
 
     const opts = {
