@@ -25,11 +25,11 @@ class ImgPage extends React.Component {
         case '1':
             return '/one.png';
         case '2':
-            return '/two.png';
-        case '3':
             return '/three.png';
-        case '4':
+        case '3':
             return '/four.png';
+        case '4':
+            return '/two.png';
         default:
             return '/sad_panda.gif';
         }
@@ -51,7 +51,7 @@ class ImgPage extends React.Component {
         <a href="/img/1">Image_1</a>&nbsp;
         <a href="/img/2">Image_2</a>&nbsp;
         <a href="/img/3">Image_3</a>&nbsp;
-        <a href="/img/4">Image_4</a>&nbsp;
+        {/* <a href="/img/4">Image_4</a>&nbsp; */}
         <div style={{ marginBottom: '10px' }}/>
         {myImg}
       </Layout>
