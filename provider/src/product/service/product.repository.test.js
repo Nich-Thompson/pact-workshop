@@ -1,4 +1,4 @@
-const ProductRepository = require('./service/product.repository')
+const ProductRepository = require('./product.repository')
 
 describe("ProductRepository", () => {
   it("has products", () => {

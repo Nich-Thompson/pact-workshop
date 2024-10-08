@@ -22,12 +22,11 @@ describe('Pact Verification', () => {
       console.log('pact url specified, so this test should not run');
       return;
     }
-    const fetchPactsDynamicallyOpts = {
-      // IMPORTANT: Relative path to the pact file does not work, so use your absolute path
 
-      pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/test.json"]
-      // pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/fail.json"]
-      // pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/local-pacts/pactflow-example-consumer-pactflow-example-provider.json"]
+    const fetchPactsDynamicallyOpts = {
+      // IMPORTANT: Relative path uses the path relative to the path from where the test is run, 
+      // so make sure to run this in the /provider directory
+      pactUrls: ["./src/product/pact/local-pacts/test.json"] 
     };
 
     const opts = {

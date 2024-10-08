@@ -1,5 +1,23 @@
 require('dotenv').config();
 
+//     //     //
+//     //     //
+//     //     //
+//     //     //
+//     //     //
+
+//     //     //
+
+// You can disregard this file if you are not using the Pactflow platform
+
+//     //     //
+//     //     //
+//     //     //
+//     //     //
+//     //     //
+
+//     //     //
+
 const { Verifier } = require('@pact-foundation/pact');
 const {
   baseOpts,
@@ -30,7 +48,9 @@ describe('Pact Verification', () => {
 
     const opts = {
       ...baseOpts,
-      pactUrls: ["D:/Docs/Projects/pact-workshop/provider/src/product/pacts/test.json"],
+      // IMPORTANT: Relative path uses the path relative to the path from where the test is run, 
+      // so make sure to run this in the /provider directory
+      pactUrls: ["./src/product/pact/local-pacts/test.json"],
       stateHandlers: stateHandlers,
       requestFilter: requestFilter
     };
