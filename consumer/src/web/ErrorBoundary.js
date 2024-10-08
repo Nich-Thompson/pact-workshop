@@ -4,7 +4,10 @@ import Layout from "./Layout";
 import Heading from "./Heading";
 
 export default class ErrorBoundary extends React.Component {
-  state = { has_error: false };
+  constructor(props) {
+    super(props);
+    this.state = { has_error: false };
+  }
 
   componentDidCatch() {
     this.setState({ has_error: true });

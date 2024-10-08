@@ -53,7 +53,8 @@ Het contract van de consumer is niet gewijzigd, dus dit zal nog steeds werken.
 Omdat de contracten compatible zijn krijgt nu ook de consumer een GO.
 4. Deploy!
 
-We hebben nu succesvol een werkende integratie opgebouwd tussen consumer en provider. Laten we ook kijken naar wat er kan gebeuren als er veranderingen plaatsvinden. 
+We hebben nu succesvol een werkende integratie opgebouwd tussen consumer en provider. (Zonder integratietests!)
+Laten we ook kijken naar wat er kan gebeuren als er veranderingen plaatsvinden. 
 
 Scenario 1: De provider doet een backwards incompatible change:
 1. Ga naar de product.js class in het provider project, en comment de 'id' property uit. Als je nu npm test runt zal je zien dat de tests falen.

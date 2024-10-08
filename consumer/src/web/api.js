@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const adapter = require('axios/lib/adapters/http');
-import { Product } from './product';
+import { Product } from './model/product';
 
 axios.defaults.adapter = adapter;
 
