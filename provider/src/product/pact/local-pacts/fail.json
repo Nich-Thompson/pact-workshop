@@ -1,157 +1,157 @@
 {
-    "consumer": {
-      "name": "pactflow-example-consumer"
-    },
-    "interactions": [
-      {
-        "description": "a request to get a product",
-        "providerStates": [
-          {
-            "name": "a product with ID 10 exists"
-          }
-        ],
-        "request": {
-          "headers": {
-            "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
-          },
-          "matchingRules": {
-            "header": {
-              "$.Authorization": {
-                "combine": "AND",
-                "matchers": [
-                  {
-                    "match": "type"
-                  }
-                ]
-              }
-            }
-          },
-          "method": "GET",
-          "path": "/product/10"
+  "consumer": {
+    "name": "pactflow-example-consumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to get a product",
+      "providerStates": [
+        {
+          "name": "a product with ID 100 does not exist"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
         },
-        "response": {
+        "matchingRules": {
+          "header": {
+            "$.Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "GET",
+        "path": "/product/100"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "a request to get a product",
+      "providerStates": [
+        {
+          "name": "a product with ID 3 exists"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
+        },
+        "matchingRules": {
+          "header": {
+            "$.Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "GET",
+        "path": "/product/3"
+      },
+      "response": {
+        "body": {
+          "id": "3",
+          "name": "Mooie Eikenhouten Kist",
+          "type": "Kist"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
           "body": {
-            "id": "10",
-            "name": "28 Degrees",
-            "type": "CREDIT_CARD"
-          },
-          "headers": {
-            "Content-Type": "application/json; charset=utf-8"
-          },
-          "matchingRules": {
-            "body": {
-              "$": {
-                "combine": "AND",
-                "matchers": [
-                  {
-                    "match": "type"
-                  }
-                ]
-              }
-            },
-            "header": {}
-          },
-          "status": 200
-        }
-      },
-      {
-        "description": "a request to get a product",
-        "providerStates": [
-          {
-            "name": "a product with ID 11 does not exist"
-          }
-        ],
-        "request": {
-          "headers": {
-            "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
-          },
-          "matchingRules": {
-            "header": {
-              "$.Authorization": {
-                "combine": "AND",
-                "matchers": [
-                  {
-                    "match": "type"
-                  }
-                ]
-              }
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
             }
           },
-          "method": "GET",
-          "path": "/product/11"
+          "header": {}
         },
-        "response": {
-          "status": 404
-        }
-      },
-      {
-        "description": "a request to get all products",
-        "providerStates": [
-          {
-            "name": "products exist"
-          }
-        ],
-        "request": {
-          "headers": {
-            "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
-          },
-          "matchingRules": {
-            "header": {
-              "$.Authorization": {
-                "combine": "AND",
-                "matchers": [
-                  {
-                    "match": "type"
-                  }
-                ]
-              }
-            }
-          },
-          "method": "GET",
-          "path": "/products"
-        },
-        "response": {
-          "body": [
-            {
-              "id": "10",
-              "name": "28 Degrees",
-              "type": "CREDIT_CARD",
-              "breakingField": "this should not be here"
-            }
-          ],
-          "headers": {
-            "Content-Type": "application/json; charset=utf-8"
-          },
-          "matchingRules": {
-            "body": {
-              "$": {
-                "combine": "AND",
-                "matchers": [
-                  {
-                    "match": "type"
-                  }
-                ]
-              }
-            },
-            "header": {}
-          },
-          "status": 200
-        }
-      }
-    ],
-    "metadata": {
-      "pact-js": {
-        "version": "10.1.4"
-      },
-      "pactRust": {
-        "ffi": "0.3.12",
-        "models": "0.4.5"
-      },
-      "pactSpecification": {
-        "version": "3.0.0"
+        "status": 200
       }
     },
-    "provider": {
-      "name": "pactflow-example-provider"
+    {
+      "description": "a request to get all products",
+      "providerStates": [
+        {
+          "name": "products exist"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Authorization": "Bearer 2019-01-14T11:34:18.045Z"
+        },
+        "matchingRules": {
+          "header": {
+            "$.Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "method": "GET",
+        "path": "/products"
+      },
+      "response": {
+        "body": [
+          {
+            "id": "3",
+            "name": "Mooie Eikenhouten Kist",
+            "type": "Kist",
+            "fieldThatDoesNotExist": "bad value!"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
     }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.1.4"
+    },
+    "pactRust": {
+      "ffi": "0.3.12",
+      "models": "0.4.5"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "pactflow-example-provider"
   }
+}

@@ -1,7 +1,7 @@
 import { PactV3 } from '@pact-foundation/pact';
-import { API } from './api';
+import { API } from './web/api';
 import { MatchersV3 } from '@pact-foundation/pact';
-import { Product } from './product';
+import { Product } from './web/model/product';
 const { eachLike, like } = MatchersV3;
 const Pact = PactV3;
 
@@ -14,29 +14,29 @@ const mockProvider = new Pact({
 
 describe('API Pact test', () => {
   describe('retrieving a product', () => {
-    test('ID 10 exists', async () => {
+    test('ID 3 exists', async () => {
       // Arrange
       let expectedProduct = {
-        id: '10',
-        type: 'CREDIT_CARD',
-        name: '28 Degrees'
+        id: '3',
+        type: 'Kist',
+        name: 'Mooie Eikenhouten Kist'
       };
 
       // Uncomment to see this fail
       // expectedProduct = { 
-      //   id: '10', 
-      //   type: 'CREDIT_CARD', 
+      //   id: '3', 
+      //   type: 'Kist', 
       //   name: '28 Degrees', 
       //   price: 30.0, 
-      //   newField: 22
+      //   newFieldThatShouldNotExist: 22
       // }
 
       mockProvider
-        .given('a product with ID 10 exists')
+        .given('a product with ID 3 exists')
         .uponReceiving('a request to get a product')
         .withRequest({
           method: 'GET',
-          path: '/product/10',
+          path: '/product/3',
           headers: {
             Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
           }
@@ -51,7 +51,7 @@ describe('API Pact test', () => {
       return mockProvider.executeTest(async (mockserver) => {
         // Act
         const api = new API(mockserver.url);
-        const product = await api.getProduct('10');
+        const product = await api.getProduct('3');
 
         // Assert - did we get the expected response
         expect(product).toStrictEqual(new Product(expectedProduct));
@@ -63,11 +63,11 @@ describe('API Pact test', () => {
       // set up Pact interactions
 
       mockProvider
-        .given('a product with ID 11 does not exist')
+        .given('a product with ID 100 does not exist')
         .uponReceiving('a request to get a product')
         .withRequest({
           method: 'GET',
-          path: '/product/11',
+          path: '/product/100',
           headers: {
             Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
           }
@@ -79,7 +79,7 @@ describe('API Pact test', () => {
         const api = new API(mockserver.url);
 
         // make request to Pact mock server
-        await expect(api.getProduct('11')).rejects.toThrow(
+        await expect(api.getProduct('100')).rejects.toThrow(
           'Request failed with status code 404'
         );
         return;
@@ -90,9 +90,9 @@ describe('API Pact test', () => {
     test('products exists', async () => {
       // set up Pact interactions
       const expectedProduct = {
-        id: '10',
-        type: 'CREDIT_CARD',
-        name: '28 Degrees'
+        id: '3',
+        type: 'Kist',
+        name: 'Mooie Eikenhouten Kist'
       };
 
       mockProvider

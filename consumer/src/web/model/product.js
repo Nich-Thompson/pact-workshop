@@ -1,9 +1,12 @@
 // This is the Product model
+// Add the missing fields to the Product model
 
 export class Product {
-  constructor({id, name, type}) {
+  constructor({
+    id,
+
+  }) {
     this.id = id
-    this.name = name
-    this.type = type
+
   }
 }

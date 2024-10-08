@@ -26,7 +26,9 @@ describe('Pact Verification', () => {
     const fetchPactsDynamicallyOpts = {
       // IMPORTANT: Relative path uses the path relative to the path from where the test is run, 
       // so make sure to run this in the /provider directory
-      pactUrls: ["./src/product/pact/local-pacts/test.json"] 
+      // pactUrls: ["./src/product/pact/local-pacts/test.json"] 
+
+      pactUrls: ["./src/product/pact/local-pacts/fail.json"] // uncomment to see a failed verification 
     };
 
     const opts = {
