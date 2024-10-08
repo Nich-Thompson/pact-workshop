@@ -39,7 +39,7 @@ class ProductPage extends React.Component {
     const productInfo = (
       <div>
         <p>ID: {this.state.product.id}</p>
-        <p>Name: {this.state.product.name}</p>
+        <p>Naam: {this.state.product.name}</p>
         <p>Type: {this.state.product.type}</p>
       </div>
     );

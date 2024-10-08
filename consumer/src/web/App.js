@@ -18,6 +18,7 @@ const productPropTypes = {
 function ProductTableRow(props) {
   return (
     <tr>
+      <td>{props.product.id}</td>
       <td>{props.product.name}</td>
       <td>{props.product.type}</td>
       <td>
@@ -30,7 +31,7 @@ function ProductTableRow(props) {
             }
           }}
         >
-          See more!
+          Details
         </Link>
       </td>
     </tr>
@@ -46,7 +47,8 @@ function ProductTable(props) {
     <table className="table table-striped table-hover">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>ID</th>
+          <th>Naam</th>
           <th>Type</th>
           <th />
         </tr>

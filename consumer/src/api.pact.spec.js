@@ -2,14 +2,12 @@ import { PactV3 } from '@pact-foundation/pact';
 import { API } from './web/api';
 import { MatchersV3 } from '@pact-foundation/pact';
 import { Product } from './web/model/product';
-const { eachLike, like } = MatchersV3;
+const { like } = MatchersV3;
 const Pact = PactV3;
 
 const mockProvider = new Pact({
   consumer: 'pactflow-example-consumer',
-  provider: process.env.PACT_PROVIDER
-    ? process.env.PACT_PROVIDER
-    : 'pactflow-example-provider'
+  provider: 'pactflow-example-provider'
 });
 
 describe('API Pact test', () => {
@@ -21,15 +19,6 @@ describe('API Pact test', () => {
         type: 'Kist',
         name: 'Mooie Eikenhouten Kist'
       };
-
-      // Uncomment to see this fail
-      // expectedProduct = { 
-      //   id: '3', 
-      //   type: 'Kist', 
-      //   name: '28 Degrees', 
-      //   price: 30.0, 
-      //   newFieldThatShouldNotExist: 22
-      // }
 
       mockProvider
         .given('a product with ID 3 exists')
@@ -55,71 +44,6 @@ describe('API Pact test', () => {
 
         // Assert - did we get the expected response
         expect(product).toStrictEqual(new Product(expectedProduct));
-        return;
-      });
-    });
-
-    test('product does not exist', async () => {
-      // set up Pact interactions
-
-      mockProvider
-        .given('a product with ID 100 does not exist')
-        .uponReceiving('a request to get a product')
-        .withRequest({
-          method: 'GET',
-          path: '/product/100',
-          headers: {
-            Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
-          }
-        })
-        .willRespondWith({
-          status: 404
-        });
-      return mockProvider.executeTest(async (mockserver) => {
-        const api = new API(mockserver.url);
-
-        // make request to Pact mock server
-        await expect(api.getProduct('100')).rejects.toThrow(
-          'Request failed with status code 404'
-        );
-        return;
-      });
-    });
-  });
-  describe('retrieving products', () => {
-    test('products exists', async () => {
-      // set up Pact interactions
-      const expectedProduct = {
-        id: '3',
-        type: 'Kist',
-        name: 'Mooie Eikenhouten Kist'
-      };
-
-      mockProvider
-        .given('products exist')
-        .uponReceiving('a request to get all products')
-        .withRequest({
-          method: 'GET',
-          path: '/products',
-          headers: {
-            Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
-          }
-        })
-        .willRespondWith({
-          status: 200,
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-          },
-          body: eachLike(expectedProduct)
-        });
-      return mockProvider.executeTest(async (mockserver) => {
-        const api = new API(mockserver.url);
-
-        // make request to Pact mock server
-        const products = await api.getAllProducts();
-
-        // assert that we got the expected response
-        expect(products).toStrictEqual([new Product(expectedProduct)]);
         return;
       });
     });

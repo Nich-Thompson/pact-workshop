@@ -3,19 +3,59 @@
 1. Download het project.
 2. Open 2 aparte VSCode instances, één voor het consumer project, één voor het provider project. 
 3. In beide projecten, run 'npm install' en 'npm start'.
-4. Als je nu naar http://localhost:3000 gaat zou je de pagina moeten kunnen zien. 
+4. Als je nu naar http://localhost:3000 gaat zou je de pagina moeten kunnen zien. (Al is deze nog vrij leeg)
 
-# TODO:
-laat iedereen zelf het model maken ipv degene die al bestaat
 
-### Test
-1. Bekijk de tests in api.pact.spec.js
-Je ziet hier... TODO:
+### Context
+Er zijn een hoop producten die rondom een uitvaart besteld kunnen worden, en ons team heeft als taak gekregen om deze producten op 1 centrale plek weer te geven.
+Een ander team, team UitvaartProducten (hierna te noemen UVP), heeft alle producten al in hun database staan. Na lang gediscussieerd te hebben is uiteindelijk afgestemd dat UVP een api gaat exposen waarbij wij de informatie van de producten kunnen ophalen. Deze zijn te benaderen via /products om alle producten op te halen, en /product/{id} om een specifiek product terug te krijgen.
+De calls voor deze routes hebben we alvast gemaakt, en zijn terug te vinden in api.js
+
+```js
+// Hier zie je een voorbeeld
+  async getProduct(id) {
+    return axios
+      .get(this.withPath('/product/' + id), {
+        headers: {
+          Authorization: this.generateAuthToken()
+        }
+      })
+      // Hier mappen we de response naar een Product object, zie ./model/product.js
+      .then((r) => new Product(r.data)); 
+  }
+```
+
+Er is afgesproken dat wij de volgende properties mogen verwachten van de producten die wij terugkrijgen:
+- Een <b>id</b>
+- De <b>naam</b> van het product
+- Een <b>type</b> die het producttype aangeeft
+
+Id gingen we al van uit dus die hadden we al toegevoegd, maar de andere 2 missen nog. Dat is ook de reden dat de pagina er nog zo leeg uit ziet. 
+
+##### opdracht i: voeg de missende properties toe aan product.js
+
+Wanneer je de 'naam' en 'type' properties hebt toegevoegd zul je zien dat er diverse types getoond worden, echter blijven de namen nog leeg. 
+Na uren debuggen vinden we de oorzaak, wij krijgen niet 'naam' terug, maar de Engelse variant 'name'! 
+Na het veranderen van de name property zou je nu ook de namen te zien moeten krijgen.
+Toch was dit wel vervelend, hadden we dit maar beter kunnen afstemmen...
+
+Gelukkig voor ons is er de afgelopen week een consultant ingehuurd die het over een manier heeft gehad om dit soort fouten eerder en sneller te spotten: contract testing. 
+De consultant is zelfs zo gallant geweest om met de tool 'PactFlow' alvast een test voor ons op te zetten. 
+
+
+### Consumer PactFlow tests
+In de /src folder kun je api.pact.spec.js terugvinden. 
+
+
+1. Bekijk de test in api.pact.spec.js
 2. Run npm test
 3. Er zou nu een contract gegenereerd moeten zijn in de /pacts folder. 
 
+
 ### Contract
-Wat kunnen we met dit contract? Om redenen* gaan we het nu niet naar een broker uploaden, maar zullen we deze handmatig overzetten. Pak het gegenereerde bestand uit /pacts/ en stop deze in de /pacts folder in het provider project. 
+Wat kunnen we met dit contract? 
+Normaliter zou je deze naar een broker uploaden, dat is een gecentraliseerde plek waar beide consumer en provider een 
+Om redenen* gaan we het nu niet naar een broker uploaden, maar zullen we deze handmatig overzetten. Pak het gegenereerde bestand uit /pacts/ en stop deze in de /pacts folder in het provider project. 
 
 Om wel het idee duidelijk te maken schetsen we het volgende scenario:
 We hebben een nieuw project opgezet waar wij de consumer zijn, laten we zeggen dat we bestellingen voor telefoons willen kunnen plaatsen via een API. 
