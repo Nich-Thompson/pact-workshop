@@ -5,7 +5,9 @@
 2. run het volgende commando: python -m pip install setuptools
 3. Download het project.
 4. Open 2 aparte VSCode instances, één voor het consumer project, één voor het provider project. 
-5. In beide projecten, run 'npm install' en 'npm start'.
+5. In beide projecten, run de volgende commando's: 
+    - npm install
+    - npm start
 6. Als je nu naar http://localhost:3000 gaat zou je de pagina moeten kunnen zien. (Al is deze nog vrij leeg)
 
 
@@ -103,7 +105,7 @@ Er zou nu een contract gegenereerd moeten zijn in de /pacts folder.
 ### Contract
 Wat kunnen we met dit contract? 
 Normaliter zou je deze naar een broker uploaden, dat is een gecentraliseerde plek waar beide consumer en provider informatie over het contract kunnen verwisselen.  
-Om redenen* gaan we het nu niet naar een broker uploaden, maar zullen we deze handmatig overzetten. Pak het gegenereerde bestand uit /pacts/ en stop deze in de /pacts folder in het provider project. 
+Om redenen* gaan we het nu niet naar een broker uploaden, maar zullen we deze handmatig overzetten. Pak het gegenereerde bestand uit /pacts/ en stop deze in de /local-pacts folder in het provider project. 
 
 Om wel het idee duidelijk te maken schetsen we het volgende scenario:
 Om onze integratie met UVP te kunnen contract testen hebben we een pipeline opgezet. De pipeline gaat kijken of ons contract voldoet, en geeft een go/no-go resultaat terug. 
