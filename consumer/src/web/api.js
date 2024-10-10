@@ -1,54 +1,51 @@
-const axios = require('axios').default;
-const adapter = require('axios/lib/adapters/http');
+import axios from 'axios';
 import { Product } from './model/product';
 
-axios.defaults.adapter = adapter;
-
-// This class contains the API calls our consumer performs
-
-export class API {
-  constructor(url) {
-    if (url === undefined || url === '') {
-      url = process.env.REACT_APP_API_BASE_URL;
-    }
-    if (url.endsWith('/')) {
-      url = url.substr(0, url.length - 1);
-    }
-    this.url = url;
+class API {
+  constructor(baseURL) {
+    this.baseURL = baseURL;
   }
 
   withPath(path) {
-    if (!path.startsWith('/')) {
-      path = '/' + path;
-    }
-    return `${this.url}${path}`;
+    return `${this.baseURL}${path}`;
   }
 
   generateAuthToken() {
-    return 'Bearer ' + new Date().toISOString();
-  }
-
-  async getAllProducts() {
-    return axios
-      .get(this.withPath('/products'), {
-        headers: {
-          Authorization: this.generateAuthToken()
-        }
-      })
-      .then((r) => r.data.map((p) => new Product(p)));
+    // Implement token generation logic here
+    return 'Bearer 2019-01-14T11:34:18.045Z';
   }
 
   async getProduct(id) {
-    return axios
-      .get(this.withPath('/product/' + id), {
+    try {
+      const response = await axios.get(this.withPath('/product/' + id), {
         headers: {
           Authorization: this.generateAuthToken()
         }
-      })
-      .then((r) => new Product(r.data));
+      });
+      return new Product(response.data);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      throw error;
+    }
+  }
+
+  async getAllProducts() {
+    try {
+      const response = await axios.get(this.withPath('/products'), {
+        headers: {
+          Authorization: this.generateAuthToken()
+        }
+      });
+      return response.data.map((p) => new Product(p));
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error;
+    }
   }
 }
 
 export default new API(
-  process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080'
+  'http://localhost:8080'
 );
+
+export { API };

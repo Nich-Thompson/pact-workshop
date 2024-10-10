@@ -1,6 +1,6 @@
-import { PactV3 } from '@pact-foundation/pact';
+const PactV3 = require('@pact-foundation/pact').PactV3;
 import { API } from './web/api';
-import { MatchersV3 } from '@pact-foundation/pact';
+const MatchersV3 = require('@pact-foundation/pact').MatchersV3;
 import { Product } from './web/model/product';
 const { like } = MatchersV3;
 const Pact = PactV3;
