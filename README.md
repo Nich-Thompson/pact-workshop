@@ -1,10 +1,12 @@
 # Consumer-driven Demo
 
+
 ### Prerequisites
 
 - Een IDE (zoals VSCode)
 - Node (om npm commando's te runnen)
 - Goeie zin 😊
+
 
 ### Setup:
 
@@ -15,10 +17,11 @@
    - npm start
 4. Als je nu naar http://localhost:3000 gaat zou je de pagina moeten kunnen zien. (Al is deze nog vrij leeg)
 
+
 ### Context
 
 Wij werken een bedrijf dat uitvaartdiensten verzorgt. Om dit te kunnen doen zijn er een hoop producten die rondom een uitvaart besteld kunnen worden, en ons team heeft als taak gekregen om deze producten op 1 centrale plek weer te geven.
-Een ander team, team UitvaartProducten (hierna te noemen UVP), heeft alle producten al in hun database staan. Na lang gediscussieerd te hebben is uiteindelijk afgestemd dat UVP een api gaat exposen waarbij wij de informatie van de producten kunnen ophalen. 
+Een ander team, team UitvaartProducten (UVP), heeft alle producten al in hun database staan. Na lang gediscussieerd te hebben is uiteindelijk afgestemd dat UVP een api gaat exposen waarbij wij de informatie van de producten kunnen ophalen. 
 
 
 ### Opdracht
@@ -58,6 +61,7 @@ Toch was dit wel vervelend, dit hadden we beter willen afstemmen.
 
 Gelukkig voor ons is er de afgelopen week een consultant ingehuurd die het over een manier heeft gehad om dit soort fouten eerder en sneller te spotten: contract testing.
 De consultant is zelfs zo gallant geweest om met de tool 'PactFlow' alvast een test voor ons op te zetten.
+
 
 ### Consumer PactFlow tests
 
@@ -113,6 +117,7 @@ Wat deze test wel doet is de basis leggen voor onze <i>verwachtingen</i>. Wij ga
 
 Pact geeft ons de mogelijkheid om een Pact <i>contract</i> te genereren op basis van deze test. Om dit te doen, run <b>npm test</b> in je terminal.
 Er zou nu een contract gegenereerd moeten zijn in de /pacts folder.
+
 
 ### Contract
 
