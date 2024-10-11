@@ -17,8 +17,13 @@
 
 ### Context
 
-Er zijn een hoop producten die rondom een uitvaart besteld kunnen worden, en ons team heeft als taak gekregen om deze producten op 1 centrale plek weer te geven.
-Een ander team, team UitvaartProducten (hierna te noemen UVP), heeft alle producten al in hun database staan. Na lang gediscussieerd te hebben is uiteindelijk afgestemd dat UVP een api gaat exposen waarbij wij de informatie van de producten kunnen ophalen. Deze zijn te benaderen via /products om alle producten op te halen, en /product/{id} om een specifiek product terug te krijgen.
+Wij werken een bedrijf dat uitvaartdiensten verzorgt. Om dit te kunnen doen zijn er een hoop producten die rondom een uitvaart besteld kunnen worden, en ons team heeft als taak gekregen om deze producten op 1 centrale plek weer te geven.
+Een ander team, team UitvaartProducten (hierna te noemen UVP), heeft alle producten al in hun database staan. Na lang gediscussieerd te hebben is uiteindelijk afgestemd dat UVP een api gaat exposen waarbij wij de informatie van de producten kunnen ophalen. 
+
+
+### Opdracht
+
+De producten zijn te benaderen via /products om alle producten op te halen, en /product/{id} om een specifiek product terug te krijgen.
 Hierin zijn wij dus de <i>afnemer (consumer)</i> en is UVP de <i>aanbieder (provider)</i>.
 De calls voor deze routes hebben we alvast gemaakt, en zijn terug te vinden in api.js
 
